@@ -1,5 +1,11 @@
 require("@nomiclabs/hardhat-waffle");
 
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '.env') })
+
+// Environment variable examples - https://stackoverflow.com/questions/42335016/dotenv-file-is-not-loading-environment-variables
+const { API_URL, PRIVATE_KEY } = process.env;
+
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -17,5 +23,11 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.0",
+  solidity: "0.8.4",
+  networks: {
+    rinkeby: {
+      url: API_URL,
+      accounts: [PRIVATE_KEY],
+    },
+  },
 };
