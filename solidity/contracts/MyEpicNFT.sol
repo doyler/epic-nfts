@@ -38,8 +38,8 @@ contract MyEpicNFT is ERC721URIStorage {
   }
 
   // Add a way for users to SEE the max from the contract
-  function getTotalNFTsMintedSoFar() public view returns (uint256) {
-    return _tokenIds.current() - 1;
+  function getTotalNFTsMinted() public view returns (uint256) {
+    return _tokenIds.current();
   }
 
   /*
