@@ -84,7 +84,7 @@ contract MyEpicNFT is ERC721URIStorage {
 
   function makeAnEpicNFT() public {
     uint256 newItemId = _tokenIds.current();
-    require(newItemId < 51, "Only 50 NFTs to be minted max!");
+    require(newItemId < 10, "Only 10 NFTs to be minted max!");
 
     // TODO: The pickRandomWord methods could likely be combined into one with an extra parameter?
     //          Or just one method with less randomness
@@ -98,8 +98,6 @@ contract MyEpicNFT is ERC721URIStorage {
     // Add the random color in.
     string memory randomColor = pickRandomColor(newItemId);
     string memory finalSvg = string(abi.encodePacked(svgPartOne, randomColor, svgPartTwo, combinedWord, "</text></svg>"));
-
-    string memory finalSvg = string(abi.encodePacked(baseSvg, combinedWord, "</text></svg>"));
 
     // TODO: Does this need to cast to string then bytes? abi.encodePacked SHOULD just be returning bytes anyway
 
