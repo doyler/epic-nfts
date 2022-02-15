@@ -1,10 +1,11 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
 
 const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '.env') })
 
 // Environment variable examples - https://stackoverflow.com/questions/42335016/dotenv-file-is-not-loading-environment-variables
-const { API_URL, PRIVATE_KEY } = process.env;
+const { API_URL, PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -29,5 +30,8 @@ module.exports = {
       url: API_URL,
       accounts: [PRIVATE_KEY],
     },
+  },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
   },
 };
